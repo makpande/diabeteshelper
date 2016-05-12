@@ -41,7 +41,7 @@ DiabetesHelper.prototype = Object.create(AlexaSkill.prototype);
 DiabetesHelper.prototype.constructor = DiabetesHelper;
 
 DiabetesHelper.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    var speechText = "Welcome to the Diabetes Helper. You can ask a question like, what's the recipe for Types of Diabetes? ... Now, what can I help you with.";
+    var speechText = "Welcome to the Diabetes Helper. You can ask a question like, what is Diabetes? ... Now, what can I help you with?";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
     var repromptText = "For instructions on what you can say, please say help me.";
@@ -49,36 +49,36 @@ DiabetesHelper.prototype.eventHandlers.onLaunch = function (launchRequest, sessi
 };
 
 DiabetesHelper.prototype.intentHandlers = {
-    "RecipeIntent": function (intent, session, response) {
+    "InfoIntent": function (intent, session, response) {
         var itemSlot = intent.slots.Item,
             itemName;
         if (itemSlot && itemSlot.value){
             itemName = itemSlot.value.toLowerCase();
         }
 
-        var cardTitle = "Recipe for " + itemName,
+        var cardTitle = "Information for " + itemName,
             recipe = recipes[itemName],
             speechOutput,
             repromptOutput;
         if (recipe) {
             speechOutput = {
-                speech: recipe,
+                speech: recipe + "You can say more to learn about diabetes" // next item name,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             response.tellWithCard(speechOutput, cardTitle, recipe);
         } else {
             var speech;
             if (itemName) {
-                speech = "I'm sorry, I currently do not know the recipe for " + itemName + ". What else can I help with?";
+                speech = "I'm sorry, I currently do not know about " + itemName + ". What else can I help with?";
             } else {
-                speech = "I'm sorry, I currently do not know that recipe. What else can I help with?";
+                speech = "I'm sorry, I currently do not know about that. What else can I help with?";
             }
             speechOutput = {
                 speech: speech,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             repromptOutput = {
-                speech: "What else can I help with?",
+                speech: "What else can I help you with?",
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             response.ask(speechOutput, repromptOutput);
@@ -96,8 +96,8 @@ DiabetesHelper.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        var speechText = "You can ask questions about diabetes such as, what's the recipe for a common symptoms, or, you can say exit... Now, what can I help you with?";
-        var repromptText = "You can say things like, what's the recipe for a common symptoms, or you can say exit... Now, what can I help you with?";
+        var speechText = "You can ask questions about diabetes such as, what are the symptoms, or, you can say exit... Now, what can I help you with?";
+        var repromptText = "You can say things like, what are the symptoms, or you can say exit... Now, what can I help you with?";
         var speechOutput = {
             speech: speechText,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT

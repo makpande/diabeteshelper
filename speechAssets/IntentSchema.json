@@ -1,7 +1,7 @@
 {
   "intents": [
     {
-      "intent": "RecipeIntent",
+      "intent": "InfoIntent",
       "slots": [
       {
         "name" : "Item",
