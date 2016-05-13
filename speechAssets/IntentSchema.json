@@ -9,6 +9,9 @@
       }
      ]
     },
+    {
+      "intent": "NextIntent"
+    },
    {
       "intent": "AMAZON.HelpIntent"
     },

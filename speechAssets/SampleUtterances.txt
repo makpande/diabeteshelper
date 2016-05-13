@@ -3,3 +3,5 @@ InfoIntent tell me about the {Item}
 InfoIntent tell me more about {Item}
 InfoIntent what are the {Item}
 InfoIntent what is {Item}
+InfoIntent what is the {Item}
+NextIntent next

@@ -24,6 +24,8 @@
 var AlexaSkill = require('./AlexaSkill'),
     recipes = require('./recipes');
 
+var recipe;
+
 var APP_ID = undefined; //replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]';
 
 /**
@@ -57,12 +59,14 @@ DiabetesHelper.prototype.intentHandlers = {
         }
 
         var cardTitle = "Information for " + itemName,
-            recipe = recipes[itemName],
             speechOutput,
             repromptOutput;
+
+        recipe = recipes[itemName];
+
         if (recipe) {
             speechOutput = {
-                speech: recipe + "You can say more to learn about diabetes" // next item name,
+                speech: recipe.info + "You can say next to learn more." //You can say more to learn about diabetes." // next item name,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             response.tellWithCard(speechOutput, cardTitle, recipe);
@@ -83,6 +87,40 @@ DiabetesHelper.prototype.intentHandlers = {
             };
             response.ask(speechOutput, repromptOutput);
         }
+    },
+
+    "NextIntent": function (intent,session, response) {
+      var itemName = recipe.next.toLowerCase();
+
+      var cardTitle = "Information for " + itemName,
+          speechOutput,
+          repromptOutput;
+
+      recipe = recipes[itemName];
+
+      if (recipe) {
+          speechOutput = {
+              speech: recipe.info + "You can say next to learn more." //You can say more to learn about diabetes." // next item name,
+              type: AlexaSkill.speechOutputType.PLAIN_TEXT
+          };
+          response.tellWithCard(speechOutput, cardTitle, recipe);
+      } else {
+          var speech;
+          if (itemName) {
+              speech = "I'm sorry, I currently do not know about " + itemName + ". What else can I help with?";
+          } else {
+              speech = "I'm sorry, I currently do not know about that. What else can I help with?";
+          }
+          speechOutput = {
+              speech: speech,
+              type: AlexaSkill.speechOutputType.PLAIN_TEXT
+          };
+          repromptOutput = {
+              speech: "What else can I help you with?",
+              type: AlexaSkill.speechOutputType.PLAIN_TEXT
+          };
+          response.ask(speechOutput, repromptOutput);
+      }
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
