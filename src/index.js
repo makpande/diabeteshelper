@@ -66,10 +66,10 @@ DiabetesHelper.prototype.intentHandlers = {
 
         if (recipe) {
             speechOutput = {
-                speech: recipe.info + "You can say next to learn more." //You can say more to learn about diabetes." // next item name,
+                speech: recipe.info + "You can say 'next' to learn more.", //"You can say more to learn about diabetes." // next item name,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
-            response.tellWithCard(speechOutput, cardTitle, recipe);
+            response.tellWithCard(speechOutput, cardTitle, recipe.info);
         } else {
             var speech;
             if (itemName) {
@@ -90,6 +90,7 @@ DiabetesHelper.prototype.intentHandlers = {
     },
 
     "NextIntent": function (intent,session, response) {
+      // response.ask("You requested the next intent", "Reprompt text");
       var itemName = recipe.next.toLowerCase();
 
       var cardTitle = "Information for " + itemName,
@@ -100,10 +101,10 @@ DiabetesHelper.prototype.intentHandlers = {
 
       if (recipe) {
           speechOutput = {
-              speech: recipe.info + "You can say next to learn more." //You can say more to learn about diabetes." // next item name,
+              speech: (recipe.info + " You can say " + recipe.next + " to learn more about diabetes." ),// next item name,
               type: AlexaSkill.speechOutputType.PLAIN_TEXT
           };
-          response.tellWithCard(speechOutput, cardTitle, recipe);
+          response.tellWithCard(speechOutput, cardTitle, recipe.info);
       } else {
           var speech;
           if (itemName) {
