@@ -7,31 +7,7 @@
 
     or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 */
-// module.exports = {
-//
-//   "diabetes": "Diabetes is a disease in which the body is unable to properly use and store glucose, Glucose backs up in the bloodstream, causing one’s blood glucose (sometimes referred to as blood sugar) to rise too high.",
-//   "types of diabetes": "Common types of diabetes are Type one Diabetes, Type two Diabetes, Gestational Diabetes.",
-//   "type one diabetes": "In type one (fomerly called juvenile-onset or insulin-dependent) diabetes, the body completely stops producing any insulin, a hormone that enables the body to use glucose found in foods for energy.",
-//   "type two diabetes": "Type two (formerly called adult-onset or non insulin-dependent) diabetes results when the body doesn’t produce enough insulin and/or is unable to use insulin properly (insulin resistance). This form of diabetes usually occurs in people who are over 40, overweight, and have a family history of diabetes.",
-//   "gestational diabetes": "Gestational diabetes is a condition in which women without previously diagnosed diabetes exhibit high blood glucose levels during pregnancy. It usually occurs for a temporary period and can go away after child birth.",
-//   "eating habits": "You can have sweets in moderation and should make of healthy meal plans.",
-//   "leading cause of death": "Type 2 Diabetes is the seventh leading cause of death in the United States.",
-//   "heart disease and diabetes": "It accounts for 90% to 95% of all diagnosed cases of heart disease.",
-//   "role of insulin in diabetes": "Insulin is a hormone that helps your body turn sugar into energy.",
-//   "insulin resistant diabetes": "When you have type 2 diabetes, your cells don't respond to insulin like they should.",
-//   "side effects of diabetes": "When it happens, sugar backs up in your blood. Your pancreas makes even more insulin to get rid of sugar, so you wind up with too much of both insulin and sugar.",
-//   "facts of diabetes": "Almost a one third of people with diabetes don't know they have diabetes.",
-//   "symptoms": "Heavy thirst is a common symptom, people with high blood sugar are often extremely thirsty. Other symptoms include dry mouth and being hungry (espicially after you eat).",
-//   "sore symptoms": "Peeing more, fatigue, blurred vision, headaches, itching, numbness and tingling in your hands and feet, wounds heal more slowly, gain weight, frequent yeast infection, have sexual problems.",
-//   "facts about beginning of diabetes": "This disease doesn't start suddenly. Some people are first diagnosed with prediabetes(also called impaired glucose tolerance or impaired fasting glucose).",
-//   "diabetes control": "Lifestyle changes like weight loss, eating a healthier diet, and getting more exercise can often ward off full blown diabetes. Lifestyle changes is more important can cut your risk by 58%.",
-//   "initial treatment": "Taking prescription medicine like metformin can help. Talk to your doctor about treatment.",
-//   "age at risk": "For people age 60 or older their risk of diabetes is 71%.",
-//   "main factor for diabetes": "Obesity is the main factor for people likely to get diabetes.",
-//   "severe effects of diabetes": "Over the time, severe effects of diabetes include blindness, heart disease, nerve and blood vessel damage, kidney disease and other major health problems.",
-//   "common effects on health": "Depression and gum disease are also more common for diabetes patients as per CDC.",
-//   "cause of diabetes": "Causes can be genetic and lifestyle factors like physical activity, illeness, stress can affect blood glucose levels."
-// };
+
 module.exports = {
   "diabetes": {
     "next": "types of diabetes",
