@@ -26,6 +26,8 @@ var AlexaSkill = require('./AlexaSkill'),
 
 var recipe;
 
+var disclaimer = "This information is not a substitute for professional advice and the information is for educational purposes only.";
+
 var APP_ID = undefined; //replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]';
 
 /**
@@ -43,12 +45,18 @@ DiabetesHelper.prototype = Object.create(AlexaSkill.prototype);
 DiabetesHelper.prototype.constructor = DiabetesHelper;
 
 DiabetesHelper.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    var speechText = "Welcome to the Diabetes Helper. You can ask a question like, what is Diabetes? ... Now, what can I help you with?";
+    var speechText = "Welcome to the Diabetes Helper. " + disclaimer + " You can ask a question like, what are the symptoms? ... Now, what can I help you with?";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
     var repromptText = "For instructions on what you can say, please say help me.";
     response.ask(speechText, repromptText);
 };
+
+// This is provided as an information resource only,
+// and is only to be used or relied on for any diagnostic or treatment purposes.
+// This information is not intended to be patient education and
+// should not be used as a substitute for professional diagnosis and treatment.
+
 
 DiabetesHelper.prototype.intentHandlers = {
     "InfoIntent": function (intent, session, response) {
@@ -66,10 +74,15 @@ DiabetesHelper.prototype.intentHandlers = {
 
         if (recipe) {
             speechOutput = {
-                speech: recipe.info + "You can say 'next' to learn more.", //"You can say more to learn about diabetes." // next item name,
+                speech: recipe.info + " You can say 'next' to learn more. " + disclaimer, //"You can say more to learn about diabetes." // next item name,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
-            response.tellWithCard(speechOutput, cardTitle, recipe.info);
+            repromptOutput = {
+                speech: "You can say 'next' to learn more.",
+                type: AlexaSkill.speechOutputType.PLAIN_TEXT
+            };
+            // response.shouldEndSesssion = false;
+            response.ask(speechOutput, repromptOutput);
         } else {
             var speech;
             if (itemName) {
@@ -101,10 +114,15 @@ DiabetesHelper.prototype.intentHandlers = {
 
       if (recipe) {
           speechOutput = {
-              speech: (recipe.info + " You can say " + recipe.next + " to learn more about diabetes." ),// next item name,
+              speech: (recipe.info + " " + disclaimer + " You can say " + recipe.next + " to learn more about diabetes." ),// next item name,
               type: AlexaSkill.speechOutputType.PLAIN_TEXT
           };
-          response.tellWithCard(speechOutput, cardTitle, recipe.info);
+
+          repromptOutput = {
+              speech: ("You can say " + recipe.next + " to learn more about diabetes." ),
+              type: AlexaSkill.speechOutputType.PLAIN_TEXT
+          };
+          response.ask(speechOutput, repromptOutput);
       } else {
           var speech;
           if (itemName) {
