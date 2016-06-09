@@ -45,7 +45,7 @@ DiabetesHelper.prototype = Object.create(AlexaSkill.prototype);
 DiabetesHelper.prototype.constructor = DiabetesHelper;
 
 DiabetesHelper.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    var speechText = "Welcome to the Diabetes Helper. " + disclaimer + " You can ask a question like, what are the symptoms? ... Now, what can I help you with?";
+    var speechText = "Welcome to the Diabetes Helper. " + disclaimer + " You can ask a question like, what are the types of diabetes? ... Now, what can I help you with?";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
     var repromptText = "For instructions on what you can say, please say help me.";
@@ -74,7 +74,7 @@ DiabetesHelper.prototype.intentHandlers = {
 
         if (recipe) {
             speechOutput = {
-                speech: recipe.info + " You can say 'next' to learn more. " + disclaimer, //"You can say more to learn about diabetes." // next item name,
+                speech: recipe.info + disclaimer + " You can say 'next' to learn more. ", //"You can say more to learn about diabetes." // next item name,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             repromptOutput = {
@@ -114,12 +114,12 @@ DiabetesHelper.prototype.intentHandlers = {
 
       if (recipe) {
           speechOutput = {
-              speech: (recipe.info + " " + disclaimer + " You can say " + recipe.next + " to learn more about diabetes." ),// next item name,
+              speech: (recipe.info + " " + disclaimer + " You can say tell me about " + recipe.next + " to learn more about diabetes." ),// next item name,
               type: AlexaSkill.speechOutputType.PLAIN_TEXT
           };
 
           repromptOutput = {
-              speech: ("You can say " + recipe.next + " to learn more about diabetes." ),
+              speech: ("You can say tell me about " + recipe.next + " to learn more about diabetes." ),
               type: AlexaSkill.speechOutputType.PLAIN_TEXT
           };
           response.ask(speechOutput, repromptOutput);
@@ -153,8 +153,8 @@ DiabetesHelper.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        var speechText = "You can ask questions about diabetes such as, what are the symptoms, or, you can say exit... Now, what can I help you with?";
-        var repromptText = "You can say things like, what are the symptoms, or you can say exit... Now, what can I help you with?";
+        var speechText = "You can ask questions about diabetes such as, what are the type 2 diabetes, or, you can say exit... Now, what can I help you with?";
+        var repromptText = "You can say things like, what are the type 2 diabetes, or you can say exit... Now, what can I help you with?";
         var speechOutput = {
             speech: speechText,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT

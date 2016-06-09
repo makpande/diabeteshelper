@@ -65,6 +65,14 @@ module.exports = {
     "next": "facts about beginning of diabetes",
     "info": "Peeing more, fatigue, blurred vision, headaches, itching, numbness and tingling in your hands and feet, wounds heal more slowly, gain weight, frequent yeast infection, have sexual problems.",
   },
+  "symptons": {
+    "next": "more symptoms",
+    "info": "Heavy thirst is a common symptom, people with high blood sugar are often extremely thirsty.Other symptoms include dry mouth and being hungry (espicially after you eat).",
+  },
+  "more symptons": {
+    "next": "facts about beginning of diabetes",
+    "info": "Peeing more, fatigue, blurred vision, headaches, itching, numbness and tingling in your hands and feet, wounds heal more slowly, gain weight, frequent yeast infection, have sexual problems.",
+  },
   "facts about beginning of diabetes": {
     "next": "diabetes control",
     "info": "This disease doesn't start suddenly. Some people are first diagnosed with prediabetes(also called impaired glucose tolerance or impaired fasting glucose).",
